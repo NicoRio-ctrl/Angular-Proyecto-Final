@@ -4,11 +4,12 @@ import { PokemonInterface } from '../../../../services/pokemon-interface';
 import { FetchService } from '../../../../services/fetch.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { HexagonalChartComponent } from '../hexagonal-chart/hexagonal-chart.component';
 
 @Component({
   selector: 'app-poke-detail',
   standalone: true,
-  imports: [],
+  imports: [HexagonalChartComponent],
   template: `
     <section class='flex-container'>
       <div class='flex-item'>
@@ -51,7 +52,7 @@ import { Router } from '@angular/router';
         <section class='stats'>
           <ul class='list'>
             <p><span class='encabezado'>Stats:</span></p>
-            <li >
+            <li>
               @if(pokemon?.stats){
                 @for (stat of pokemon?.stats; track stat.stat.name) {
                   <p>
@@ -63,7 +64,14 @@ import { Router } from '@angular/router';
               }
             </li>
           </ul>
+
+          <div class="stats-graph-container">
+            <span class='encabezado'>Graph:</span>
+            <app-hexagonal-chart [stats]="transformedStats" class="stats-graph"></app-hexagonal-chart>
+          </div>
+
         </section>
+
       </div>
 
       <button class='button' (click)="goBack()">Back</button>
@@ -73,8 +81,9 @@ import { Router } from '@angular/router';
   styleUrl: './poke-detail.component.css'
 })
 
-export class PokeDetailComponent implements OnInit{
+export class PokeDetailComponent implements OnInit {
   @Input() pokemon: PokemonInterface | null = null;
+  transformedStats: { name: string, value: number }[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -85,12 +94,12 @@ export class PokeDetailComponent implements OnInit{
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (!id || isNaN(Number(id)) || Number(id) <= 0 || Number(id) > 151){
+    if (!id || isNaN(Number(id)) || Number(id) <= 0 || Number(id) > 151) {
       this.router.navigate(['/not-found']);
-    }
-    else {
+    } else {
       this.fetchService.getPokemonById(id).then((pokemon) => {
         this.pokemon = pokemon;
+        this.transformStats(); // Llamar a transformStats después de recibir los datos
       });
     }
   }
@@ -116,5 +125,32 @@ export class PokeDetailComponent implements OnInit{
       default:
         return '';
     }
+  }
+
+  transformStats(): void {
+    if (this.pokemon && this.pokemon.stats) {
+      this.transformedStats = this.pokemon.stats.map(stat => ({
+        name: stat.stat.name,
+        value: stat.base_stat
+      }));
+      console.log(this.transformedStats); // Imprime los datos en la consola
+    }
+  }
+  
+
+  trackByType(index: number, type: any): number {
+    return type.slot;
+  }
+
+  trackByAbility(index: number, ability: any): number {
+    return ability.slot;
+  }
+
+  trackByItem(index: number, item: any): string {
+    return item.item.name;
+  }
+
+  trackByStat(index: number, stat: any): string {
+    return stat.stat.name;
   }
 }
