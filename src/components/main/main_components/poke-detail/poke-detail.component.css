@@ -1,0 +1,175 @@
+.flex-container{
+  max-width: 700px;
+  height: 80dvh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 1.15rem;
+}
+
+.flex-item{
+  width: 100%;
+  min-height: fit-content;
+}
+
+.flex-item:first-child{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.flex-item:last-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-img-types{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.name {
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.img{
+  width: 180px; 
+  height: auto;
+  background-color:  var(--main-background-color);
+  background-size: 60%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+
+#types__item{
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  border-radius: 5px;
+}
+
+.normal {
+  background-color: #A8A77A;
+}
+
+.fighting {
+  background-color: #C03028;
+}
+
+.flying {
+  background-color: #A98FF3;
+}
+
+.poison {
+  background-color: #A040A0;
+}
+
+.ground {
+  background-color: #E2BF65;
+}
+
+.rock {
+  background-color: #B6A136;
+}
+
+.bug{
+  background-color: #A6B91A;
+}
+
+.ghost{
+  background-color: #735797;
+}
+
+.fire {
+  background-color: #F08030;
+}
+
+.water {
+  background-color: #6890F0;
+}
+
+.grass {
+  background-color: #78C850;
+}
+
+.electric {
+  background-color: #F8D030;
+}
+
+.psychic{
+  background-color: #F95587;
+}
+
+.ice {
+  background-color: #98D8D8;
+}
+
+.dragon{
+  background-color: #6F35FC;
+}
+
+.steel{
+  background-color: #B7B7CE;
+  display: none;
+}
+
+.fairy{
+  background-color: #EE99AC;
+}
+
+.info-abilities-items{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.stats{
+  width: 75%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.list{
+  list-style: none;
+}
+
+.button{
+  border-radius: 5px;
+  border: 1px solid var(--contrast3-color);
+  background-color: var(--contrast3-color);
+  transition: background-color 0.3s ease;
+  margin: 2rem auto 0.5rem auto;
+  padding: 5px 30px;
+  z-index: 5000;
+  cursor: pointer;
+  color: #fdfdfd;
+}
+
+.button:hover {
+  background-color: var(--contrast1-color);
+  border: 1px solid var(--contrast1-color);
+}
+
+.encabezado{
+  background-color: var(--contrast3-color);
+  color: var(--main-background-color);
+  padding: 2px;
+  border: 1px solid var(--contrast1-color);
+  border-radius: 4px;
+}

@@ -1,0 +1,61 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: center;
+    font-weight: bold;
+    padding: 0 2.5rem;
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar__item {
+    text-decoration: none;
+    position: relative;
+}
+
+.navbar__item:first-child {
+    margin-right: auto;
+}
+
+.navbar__item:not(:first-child) {
+    margin-left: 15px;
+}
+
+.item--logo {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.item--icon{
+    width: 30px;
+    height: 30px;
+}
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('../../fonts/Pokemon Solid.ttf') format('truetype');
+}
+
+.item--title {
+    max-width: 200px;
+}
+  
+.navbar__item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px; 
+    width: 100%;
+    height: 2px; 
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.navbar__item:hover::after {
+    background-color: var(--contrast1-color); 
+}

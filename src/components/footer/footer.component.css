@@ -1,0 +1,8 @@
+section{
+    display: flex;
+    justify-content: space-between;
+}
+p{
+    font-weight: bold;
+    margin: 0 2rem;
+}
